@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Counter</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        #countDisplay {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="increaseCount()">Click Me</button>
+    <p id="countDisplay">Button Clicked: 0 times</p>
+
+    <script>
+        let count = 0;
+
+        function increaseCount() {
+            count++;
+            document.getElementById("countDisplay").innerText = `Button Clicked: ${count} times`; // Fixed this line
+        }
+    </script>
+
+</body>
+</html>
