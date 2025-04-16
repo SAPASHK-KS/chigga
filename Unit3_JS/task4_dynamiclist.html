@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:active {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            width: 250px;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        li button {
+            background-color: red;
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+        li button:active {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="itemInput" placeholder="Enter item"> 
+    <button id="addButton">Add</button>
+    <ul id="itemList"></ul>
+    
+    <script>
+        const button = document.querySelector('#addButton');
+        const ul = document.querySelector('#itemList');
+        const input = document.querySelector('#itemInput');
+
+        button.addEventListener('click', () => {
+            const text = input.value.trim();
+            if (text === '') return; 
+    
+            const li = document.createElement('li');
+            const btn = document.createElement('button');
+    
+            li.textContent = text;
+            btn.textContent = 'Delete';
+    
+            btn.addEventListener('click', () => {
+                li.remove();
+                input.focus();
+            });
+
+            li.appendChild(btn);
+            ul.appendChild(li);
+
+            input.value = '';
+            input.focus();
+        });
+
+        input.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") button.click();
+        });
+    </script>
+</body>
+</html>

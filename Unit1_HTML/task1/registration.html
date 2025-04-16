@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="registration.html">Registration</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+
+  <h2>Register for the Event</h2>
+  <form>
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Phone Number:</label><br>
+    <input type="tel" name="phone" required><br><br>
+
+    <label>Event Preferences:</label><br>
+    <input type="text" name="preferences"><br><br>
+
+    <label>Participation Category:</label><br>
+    <select name="category">
+      <option value="speaker">Speaker</option>
+      <option value="attendee">Attendee</option>
+      <option value="volunteer">Volunteer</option>
+    </select><br><br>
+
+    <label>Payment Method:</label><br>
+    <input type="radio" name="payment" value="online">Online
+    <input type="radio" name="payment" value="offline">Offline<br><br>
+
+    <input type="checkbox" name="agree" required>I agree to the terms and conditions<br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

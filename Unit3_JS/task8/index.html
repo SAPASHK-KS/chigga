@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alumni Status</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Alumni Details Form</h1>
+<form onsubmit="addDetails(); return false;">
+  <input type="text" id="name" placeholder="Name" required>
+  <input type="text" id="degree" placeholder="Degree" required>
+  <input type="text" id="batch" placeholder="Batch PassedOut" required>
+  <input type="text" id="linkedin" placeholder="LinkedIn Profile" required>
+  <input type="text" id="phone" placeholder="Phone No" required>
+  <input type="email" id="mail" placeholder="Mail Id" required>
+  <button type="submit">Submit</button>
+</form>
+
+<h2>All Alumni</h2>
+<table id="alumniTable">
+  <tr>
+    <th>Name</th>
+    <th>Degree</th>
+    <th>Batch</th>
+    <th>LinkedIn</th>
+    <th>Phone</th>
+    <th>Mail</th>
+  </tr>
+</table>
+
+<h2>Active Students</h2>
+<ul id="activeList"></ul>
+
+<h2>Inactive Students</h2>
+<ul id="inactiveList"></ul>
+
+<script>
+  function addDetails() {
+    let name = document.getElementById("name").value;
+    let degree = document.getElementById("degree").value;
+    let batch = document.getElementById("batch").value;
+    let linkedin = document.getElementById("linkedin").value;
+    let phone = document.getElementById("phone").value;
+    let mail = document.getElementById("mail").value;
+
+    let table = document.getElementById("alumniTable");
+    let row = table.insertRow(-1);
+    row.insertCell(0).textContent = name;
+    row.insertCell(1).textContent = degree;
+    row.insertCell(2).textContent = batch;
+    row.insertCell(3).innerHTML = `<a href="${linkedin}" target="_blank">Link</a>`;
+    row.insertCell(4).textContent = phone;
+    row.insertCell(5).textContent = mail;
+
+    let year = new Date().getFullYear();
+    if (parseInt(batch) >= year - 1) {
+      document.getElementById("activeList").innerHTML += `<li>${name}</li>`;
+    } else {
+      document.getElementById("inactiveList").innerHTML += `<li>${name}</li>`;
+    }
+
+    document.querySelector("form").reset();
+  }
+</script>
+
+</body>
+</html>

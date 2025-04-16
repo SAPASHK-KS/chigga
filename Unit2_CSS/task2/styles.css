@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.menu-table td, .menu-table th {
+  padding: 10px;
+}
+
+.menu-item:hover {
+  background-color: #f8f9fa;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+.gallery {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="order.html">Order Form</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+
+  <h2>Place Your Order</h2>
+  <form>
+    <label>Customer Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Product:</label><br>
+    <input type="text" name="product" required><br><br>
+
+    <label>Quantity:</label><br>
+    <input type="number" name="quantity" min="1" required><br><br>
+
+    <label>Payment Method:</label><br>
+    <select name="payment">
+      <option>Card</option>
+      <option>Cash on Delivery</option>
+      <option>UPI</option>
+    </select><br><br>
+
+    <input type="checkbox" name="policy" required> I agree to the store policies<br><br>
+
+    <input type="submit" value="Submit Order">
+  </form>
+</body>
+</html>

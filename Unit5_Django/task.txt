@@ -1,0 +1,143 @@
+1. Introduction and Setup
+
+What is Django?
+
+Django is a high-level web framework written in Python that enables rapid development of secure and maintainable websites. It follows the MVT (Model-View-Template) structure and comes packed with built-in features for handling databases, templates, and routing.
+
+Two reasons why Django is suitable for web development:
+
+    Django provides an ORM (Object-Relational Mapper), allowing developers to interact with the database using Python code instead of SQL.
+
+    It comes with ready-to-use components like an admin interface, form system, URL management, and built-in security.
+
+Steps to set up Django in a virtual environment:
+
+    Create a virtual environment:
+
+python -m venv myenv
+
+Activate the environment (Linux/Mac):
+
+    source myenv/bin/activate
+
+2. Creating the Project
+
+To start a new Django project named todolist, run:
+
+django-admin startproject todolist
+
+Navigate into the newly created project directory:
+
+cd todolist
+
+Now, create an app named tasks:
+
+python manage.py startapp tasks
+
+3. Models and Migrations
+
+Inside tasks/models.py, define your model like this:
+
+from django.db import models
+
+class Task(models.Model):
+    title = models.CharField(max_length=255)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+To create and apply migrations, use:
+
+python manage.py makemigrations tasks
+python manage.py migrate
+
+4. Views, Templates, and Static Files
+
+Create a view to show tasks:
+
+In tasks/views.py:
+
+from django.shortcuts import render
+from .models import Task
+
+def home(request):
+    tasks = Task.objects.all()
+    return render(request, 'home.html', {'tasks': tasks})
+
+Set up URLs:
+
+In tasks/urls.py:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+]
+
+Include the app’s URLs in todolist/urls.py:
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('tasks.urls')),
+]
+
+Create the template:
+
+In tasks/templates/home.html:
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }} -
+                {% if task.completed %}
+                    Done
+                {% else %}
+                    Pending
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+Static files configuration:
+
+    In settings.py, confirm this line is present:
+
+STATIC_URL = '/static/'
+
+    Inside the tasks app, create a folder named static.
+
+    Then, inside that folder, make a file called style.css:
+
+body {
+    font-family: sans-serif;
+    background-color: #eaeaea;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+li {
+    margin: 10px 0;
+}
+
+Remember to load the static files by placing {% load static %} at the top of the HTML template.

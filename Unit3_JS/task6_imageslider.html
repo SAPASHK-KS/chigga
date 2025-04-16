@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Slider</title>
+</head>
+<body>
+
+  <img id="slider" src="" width="500" height="300">
+  <br>
+  <button onclick="prevImage()">Previous</button>
+  <button onclick="nextImage()">Next</button>
+
+  <script>
+    const images = [
+      "https://picsum.photos/200",
+      "https://picsum.photos/500",
+      "https://picsum.photos/900"
+    ];
+    let currentIndex = 0;
+
+    const slider = document.getElementById("slider");
+    slider.src = images[currentIndex];
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      slider.src = images[currentIndex];
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      slider.src = images[currentIndex];
+    }
+  </script>
+
+</body>
+</html>

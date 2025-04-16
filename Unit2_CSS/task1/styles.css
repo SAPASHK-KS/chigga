@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.product-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.price {
+  color: green;
+  font-size: 22px;
+}
+
+.review {
+  color: #777;
+  font-style: italic;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
